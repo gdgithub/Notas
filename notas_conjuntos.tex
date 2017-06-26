@@ -1,0 +1,98 @@
+\documentclass[letterpaper, 12pt]{article} %estableciendo la clase de documento como exam con papel legal y sizefont 12
+\usepackage{amsmath, amssymb, amsfonts, latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\input{MyMacros.tex}
+
+\begin{document}
+\title{$\mathbb{Z}$ posee el mismo número de elementos que $\mathbb{N}$}
+\author{Ivan Gil}
+\maketitle
+
+\section{Motivación}
+
+Consideremos un conjunto $X = \{x_{1}, x_{2}, x_{3}, \dots, x_{n}\}$. De manera
+natural surge la siguiente pregunta: ?`Como podemos contar los elementos de $X$?
+Simplemente empezariamos a contar cada elemento. Esto lo hacemos asignado a cada
+elemento de $X$ un numero natural. Esto es, asignamos 1 a $x_{1}$, 2 a $x_{2}$ y
+asi sucesivamente hasta asignar $n$ a $x_{n}$. En tal caso diremos que $X$ tiene
+$n$ elementos.\\
+
+Basicamente hemos establecido una correspondencia biunivoca\footnote{Una función
+biyectiva} entre $X$ y una seccion de los primeros $n$ números naturales. Esto
+ultimo es fundamental, pero solo lo hemos establecido cuando $X$ es un conjunto
+finito. Afortunadamente, la misma idea puede extenderse a conjunto infinitos como
+ya veremos.
+
+\section{Marco teorico}
+
+\begin{definition}[Equivalencia]
+Dos conjuntos $X$, $Y$ no vacios se dicen ser {\it equivalentes} si existe una
+función $f : X \longrightarrow Y$ tal que $f$ es biyectiva.
+\end{definition}
+
+\begin{observation}
+Podemos notar que el conjunto $X$ de la motivación es equivalente al conjunto
+$I = \{1,2,3, \dots, n\}$. Es facil realizar la prueba, solo basta mostrar
+que existe un función biyectiva $f$ entre $I$ y $X$.\\
+
+Sea $f : I \longrightarrow X$ tal que $f(i) = x_{i}$. Si $f(i) = f(j) \Leftrightarrow x_{i} = x_{j}$,
+entonces se tiene que $i = j$ y en consecuencia $f$ es inyectiva. Por otro lado, si $x_{j} \in X$, entonces
+existe $j \in I$ tal que $f(j) = x_{j}$ con lo que $f$ es sobreyectiva. En tales casos, se concluye que
+$f$ es biyectiva. Ya que hemos podido determinar una función $f$ entre $X$ e $I$ tal que es biyectiva, se
+tiene que ambos conjuntos son equivalentes.
+\end{observation}
+
+\begin{observation}
+Dos conjuntos son equivalentes si, y solo si, tienen la misma cantidad de elementos
+\end{observation}
+
+\section{Problema}
+Estamos en condiciones de probar que $\mathbb{Z}$ tiene el mismo número de elementos que $\mathbb{N}$.
+Solo basta probar que ambos son equivalentes.
+
+\begin{lemma}
+$\mathbb{N}$ es equivalente a $\mathbb{Z}$
+\end{lemma}
+
+\begin{Proof}
+Es suficiente mostrar que existe una biyección entre $\mathbb{N}$ y $\mathbb{Z}$.\\
+
+Sea $H_{1} = \{x \in \mathbb{N} \, | \, x \equiv 0 \pmod{2} \}$ y
+$H_{2} = \{x \in \mathbb{N} \, | \, x \equiv 1 \pmod{2} \}$\\
+
+Estudiemos las funciones $f_{1} : H_{1} \longrightarrow \mathbb{Z}^{+}$ y $f_{2} : H_{2} \longrightarrow  \mathbb{Z}^{-}\cup \{0\}$
+tales que
+
+\begin{enumerate}
+\item $f_{1}(x) = \frac{x}{2}$\\
+
+Es claro que $f_{1}$ es inyectiva ya que si $f_{1}(x_{1}) = f_{1}(x_{2}) \Leftrightarrow \frac{x_{1}}{2} = \frac{x_{2}}{2}$,
+ entonces $x_{1} = x_{2}$. Por otro lado, si $y \in \mathbb{Z}^{+}$, entonces existe $2y \in H_{1}$, ya que
+ $2y \equiv 0 \pmod{2}$, tal que $f_{1}(2y) = \frac{2y}{2} = y$ y asi $f_{1}$ es sobreyectiva. Por
+ tanto $f_{1}$ es biyectiva.
+
+\item $f_{2}(x) = \frac{1-x}{2}$
+
+De manera similar, si $f_{2}(x_{1}) = f_{2}(x_{2}) \Leftrightarrow \frac{1- x_{1}}{2} = \frac{1-x_{2}}{2}$,
+ entonces $x_{1} = x_{2}$ y se tiene que $f_{2}$ es inyectiva. Por otro lado, si $y \in \mathbb{Z}^{-}\cup \{0\}$, entonces existe $1-2y \in H_{2}$, ya que
+ $1-2y \equiv 1 \pmod{2}$, tal que $f_{2}(1-2y) = \frac{1-(1-2y)}{2} = y$ y asi $f_{2}$ es sobreyectiva. Por
+ tanto $f_{2}$ es biyectiva.
+\end{enumerate}
+
+Como $H_{1} \cup H_{2} = \mathbb{N}$ y $\mathbb{Z}^{+} \cup \mathbb{Z}^{-} \cup \{0\} = \mathbb{Z}$.
+Podemos definir una función a trozos $f : \mathbb{N} \longrightarrow \mathbb{Z}$ tal que
+
+\[
+f(x) =
+\begin{cases}
+\frac{x}{2} & \text{si }  x \in H_{1} \\
+\frac{1-x}{2} & \text{si } x \in H_{2}
+\end{cases}
+\]
+
+La cual es biyectiva ya que $f_{1}$ y $f_{2}$ tambien lo son.\\
+
+Por tanto, $\mathbb{N}$ es equivalente a $\mathbb{Z}$
+\end{Proof}
+\end{document}
