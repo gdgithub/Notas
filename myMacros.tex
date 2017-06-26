@@ -1,0 +1,96 @@
+\usepackage{verbatim}
+\usepackage[thmmarks]{ntheorem}
+%Definiciones
+\def\ser{\leavevmode\raise.585ex\hbox{\small er}} %1er
+\def\sera{\leavevmode\raise.585ex\hbox{\small era}} %1era
+%Similarmente para las demas
+
+\def\sen{\mathop{\mbox{\normalfont sen}}\nolimits} %Definicion de sen para evitar utilizar \sin
+
+\def\max{\mathop{\mbox{\normalfont m\’ax}}\limits} %Definicion de max que admite subindice
+\def\sup{\mathop{\mbox{\normalfont sup}}\limits}
+\def\inf{\mathop{\mbox{\normalfont inf}}\limits}
+
+%\renewcommand\qedsymbol{$\blacksquare$} %Cambiando el QED por un cuadro negro
+
+\newcommand{\introduction}{\chapter*{Introducci\'on}}
+
+\begin{comment}
+%\theoremstyle{definition}
+  \newtheorem{definition}{Definici\'on}[chapter]
+  \newtheorem{example}{Ejemplo}[chapter]
+
+%\theoremstyle{plain}
+  \newtheorem{theorem}{Teorema}[chapter]
+  \newtheorem{corollary}{Corolario}[theorem]
+  \newtheorem{proposition}{Proposici\'on}[chapter]
+
+%\theoremstyle{remark}
+  \newtheorem{remark}{Observaci\'on}[chapter]
+\end{comment}
+
+
+\theoremstyle{plain}
+\theorembodyfont{\upshape}
+\theoremseparator{.}
+\newtheorem{definition}{Definici\'on}[section]
+
+\theoremstyle{plain}
+\theorembodyfont{\upshape}
+\theoremseparator{.}
+\newtheorem{observations}{Observaciones}[section]
+
+\theoremstyle{plain}
+\theorembodyfont{\upshape}
+\theoremseparator{.}
+\newtheorem{observation}{Observaci\'on}[section]
+
+\theoremstyle{plain}
+\theorembodyfont{\upshape}
+\theoremseparator{.}
+\newtheorem{proposition}{Proposici\'on}[section]
+
+
+\theoremstyle{plain}
+\theorembodyfont{\upshape}
+\theoremseparator{}
+\newtheorem{example}{Ejemplo}[section]
+
+\theoremstyle{plain}
+\theorembodyfont{\upshape}
+\theoremseparator{}
+\newtheorem{exercices}{Ejercios}[section]
+
+
+\theoremstyle{plain}
+\theoremheaderfont{\normalfont\bfseries}\theorembodyfont{\itshape}
+\theoremseparator{.}
+\newtheorem{theorem}{Teorema}[section]
+
+\theoremstyle{plain}
+\theoremheaderfont{\normalfont\bfseries}\theorembodyfont{\itshape}
+\theoremseparator{.}
+\newtheorem{corollary}{Corolario}[section]
+
+\theoremstyle{plain}
+\theoremindent0.5cm
+%\theoremnumbering{greek}
+\newtheorem{lemma}{Lema}[section]
+
+%Inicio de la definicion del ambiente Proof
+\theoremheaderfont{\sc}\theorembodyfont{\upshape}
+\theoremstyle{nonumberplain}
+\theoremseparator{:}
+\theoremsymbol{%\rule{1ex}{1ex}
+\qedsymbol%
+}
+\newtheorem{Proof}{Prueba}
+
+\theoremheaderfont{\sc}\theorembodyfont{\upshape}
+\theoremstyle{nonumberplain}
+\theoremseparator{:}
+\theoremsymbol{%\rule{1ex}{1ex}
+\qedsymbol%
+}
+\newtheorem{solution}{Solución}
+%Fin

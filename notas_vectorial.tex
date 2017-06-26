@@ -1,0 +1,207 @@
+\documentclass[letterpaper, 12pt]{article} %estableciendo la clase de documento como exam con papel legal y sizefont 12
+\usepackage{amsmath, amssymb, amsfonts, latexsym}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\input{MyMacros.tex}
+
+\begin{document}
+\title{Algunos conceptos del calculo vectorial}
+\author{Ivan Gil}
+\maketitle
+
+\section{Derivada}
+
+Iniciaremos la motivación con la noción de derivada en una variable real. Luego extenderemos estas ideas
+al espacio Euclideo $\mathbb{R}^{n}$:
+
+\begin{definition}[Derivada en $\mathbb{R}$]
+Sea $f: I \subset \mathbb{R} \longrightarrow \mathbb{R}$ y $x_{0} \in I$. Se dice que que $f$ es
+{\it diferenciable} en $x_{0}$ si existe el limite siguiente
+
+$$\lim_{x \longrightarrow x_{0}} \frac{f(x) - f(x_{0})}{x-x_{0}} \mbox{.}$$
+
+Cuando el limite anterior existe, a su valor lo llamamos {\it derivada} de $f$ en $x_{0}$ y lo representamos
+por $f'(x_{0})$. Ademas, a la función que asigna a cada $x \in I$ la derivada de $f$ en $x$ la llamamos
+{\it funcion derivada} de $f$ y representamos por $f'(x)$.
+\end{definition}
+
+\begin{observation}
+Otra manera de expresar la derivada de $f$ en $x_{0}$ es
+
+$$\lim_{x \longrightarrow x_{0}} \frac{f(x) - f(x_{0}) - f'(x_{0})(x-x_{0})}{x-x_{0}} = 0$$
+
+Mas aun,
+
+\[
+\lim_{x \longrightarrow x_{0}} \left \vert \frac{f(x) - f(x_{0}) - f'(x_{0})(x-x_{0})}{x-x_{0}}\right \vert =
+\lim_{x \longrightarrow x_{0}} \frac{\vert f(x) - f(x_{0}) - f'(x_{0})(x-x_{0}) \vert}{\vert x-x_{0} \vert} = 0
+\]
+
+Este ultimo resultado es util para generalizar la noción de derivada a funciones
+$f : \mathbb{R}^{m} \longrightarrow \mathbb{R}^{n}$
+\end{observation}
+
+\begin{definition}[Derivada]
+Sea $f : U \subset \mathbb{R}^{m} \longrightarrow \mathbb{R}^{n}$ y $x_{0} \in U$. Se dice que que $f$ es
+{\it diferenciable} en $x_{0}$ si existe una matriz $M_{f}(x_{0}) \in \mathcal{M}_{n \times m}$ tal que
+
+$$\lim_{x \longrightarrow x_{0}} \frac{|| f(x) - f(x_{0}) - M_{f}(x_{0})(x-x_{0}) ||}{|| x-x_{0} ||} = 0 \mbox{.}$$
+
+En tal caso se dice que $M_{f}(x_{0})$ es la derivada de $f$ en $x_{0}$. Ademas, a la función que asigna
+a cada $x \in U$ la derivada de $f$ en $x$ la llamamos función derivada de $f$ y representamos por $M_{f}(x)$.
+\end{definition}
+
+\begin{observation}
+Esto ultimo nos muestra que, en general, la derivada de una función $f : \mathbb{R}^{m} \longrightarrow \mathbb{R}^{n}$
+ es una matrix de orden $n \times m$.
+\end{observation}
+
+\begin{definition}[Matriz Jacobiana]
+Sea $f : U \subset \mathbb{R}^{m} \longrightarrow \mathbb{R}^{n}$ tal que $f \in \mathcal{C}^{1}(U)$ y $x_{0} \in U$.
+Llamamos {\it matriz Jacobiana}, y representamos como $J_{f}(x)$ a la matriz definida por
+
+$$J_{f}(x) = \sum_{i=1}^{n}\sum_{j=1}^{m} \frac{\partial f \cdot e_{i}}{\partial x_{j}} \delta_{ij}$$
+\end{definition}
+
+\begin{observation}
+Si $f : U \subset \mathbb{R}^{m} \longrightarrow \mathbb{R}^{n}$, entonces existen
+$f_{i} : U \subset \mathbb{R}^{m} \longrightarrow \mathbb{R}$ tales que $f = (f_{1}, f_{2}, \cdots, f_{n})$.\\
+
+Como $f \cdot e_{i} = f_{i}$, podemos escribir la matriz Jacobiana de $f$ como:
+
+$$J_{f}(x) = \sum_{i=1}^{n}\sum_{j=1}^{m} \frac{\partial f_{i}}{\partial x_{j}} \delta_{ij}$$
+\end{observation}
+
+\begin{observation}
+La matriz Jacobiana de $f$ en $x_{0}$ es precisamente la matriz $M_{f}(x_{0})$ de la definición de derivada.
+Asi que la derivada de una función $f : U \subset \mathbb{R}^{m} \longrightarrow \mathbb{R}^{n}$ en $x_{0} \in U$
+es $J_{f}(x_{0})$.
+\end{observation}
+
+\newpage
+\begin{example}
+Encontrar la derivada de las siguientes funciones
+
+\begin{enumerate}
+  \item $f: \mathbb{R}^{3} \longrightarrow \mathbb{R}^{2}$ tal que $f(x,y,z) = 3x^{2}yz\hat{i} + 6xyz\hat{j}$\\
+
+  {\sc Solución:}\\
+  Solo basta determinar la matriz Jacobiana de $f$. Asi que
+
+  \begin{align*}
+  J_{f}(x) &=
+  \begin{bmatrix}
+  \frac{\partial \, 3x^{2}yz}{\partial x} & \frac{\partial \, 3x^{2}yz}{\partial y} & \frac{\partial \, 3x^{2}yz}{\partial z} \\
+  \frac{\partial \, 6xyz}{\partial x} & \frac{\partial \, 6xyz}{\partial y} & \frac{\partial \, 6xyz}{\partial z}
+  \end{bmatrix}\\
+   &=
+  \begin{bmatrix}
+  6xyz & 3x^{2}z & 3x^{2}y\\
+  6yz & 6xz & 6xy
+  \end{bmatrix}
+  \end{align*}
+
+  \item $f: \mathbb{R} \longrightarrow \mathbb{R}^{2}$ tal que $f(x) = 2x^{2}\hat{i} + 6x^{3}\hat{j}$\\
+
+  {\sc Solución:}\\
+  Solo basta determinar la matriz Jacobiana de $f$. Asi que
+
+  \begin{align*}
+  J_{f}(x) &=
+  \begin{bmatrix}
+  \frac{\partial \, 2x^{2}}{\partial x}\\
+  \frac{\partial \, 6x^{3}}{\partial x}
+  \end{bmatrix}\\
+   &=
+  \begin{bmatrix}
+  4x\\
+  18x^{2}
+  \end{bmatrix}
+  \end{align*}
+
+
+\end{enumerate}
+\end{example}
+
+\begin{definition}[Diferencial]
+Sea $f : U \subset \mathbb{R}^{m} \longrightarrow \mathbb{R}^{n}$ tal que $f \in \mathcal{C}^{1}(U)$. Se
+define el {\it diferencial} de $f$, y representamos por $df$, como
+
+$$df = J_{f}(x)dx$$
+
+donde $dx =
+\begin{bmatrix}
+dx_{1}\\
+dx_{2}\\
+\vdots\\
+dx_{m}
+\end{bmatrix}$
+\end{definition}
+
+\newpage
+\begin{example}
+Encontrar el diferencial de la función $f : \mathbb{R}^{3} \longrightarrow \mathbb{R}^{3}$ definida por
+$f(x,y,z) = 3\cos(xyz)\hat{i} + 4\sen(xyz)\hat{j} + x^{2}y^{2}z^{2}\hat{k}$ en $x_{0} = (1,1,\pi)$.\\
+
+{\sc Solución:}\\
+En primer lugar vamos a determinar la matriz Jacobiana de $f$. Tenemos:
+
+
+\begin{align*}
+J_{f}(x) &=
+\begin{bmatrix}
+\frac{\partial \, 3\cos(xyz)}{\partial x} & \frac{\partial \, 3\cos(xyz)}{\partial y} & \frac{\partial \, 3\cos(xyz)}{\partial z}\\
+\frac{\partial \, 4\sen(xyz)}{\partial x} & \frac{\partial \, 4\sen(xyz)}{\partial y} & \frac{\partial \, 4\sen(xyz)}{\partial z}\\
+\frac{\partial \, x^{2}y^{2}z^{2}}{\partial x} & \frac{\partial \, x^{2}y^{2}z^{2}}{\partial y} & \frac{\partial \, x^{2}y^{2}z^{2}}{\partial z}
+\end{bmatrix}\\
+ &=
+\begin{bmatrix}
+-3yz\sen(xyz) & -3xz\sen(xyz) & -3xy\sen(xyz)\\
+4yz\cos(xyz) & 4xz\cos(xyz) & 4xy\cos(xyz)\\
+2xy^{2}z^{2} & 2x^{2}yz^{2} & 2x^{2}y^{2}z
+\end{bmatrix}
+\end{align*}
+
+Evaluando la matriz Jacobiana en $x_{0}$, se tiene
+
+\begin{align*}
+J_{f}(x_{0}) = J_{f}(1,1,\pi) &=
+\begin{bmatrix}
+-3\pi\sen(\pi) & -3\pi\sen(\pi) & -3\sen(\pi)\\
+4\pi\cos(\pi) & 4\pi\cos(\pi) & 4\cos(\pi)\\
+2\pi^{2} & 2\pi^{2} & 2\pi
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+0 & 0 & 0\\
+-4\pi & -4\pi & -4\\
+2\pi^{2} & 2\pi^{2} & 2\pi
+\end{bmatrix}
+\end{align*}
+
+Por tanto determinamos el diferencial de $f$ en $x_{0}$, como sigue
+
+\begin{align*}
+df(x_{0}) = J_{f}(x_{0})dx &=
+\begin{bmatrix}
+0 & 0 & 0\\
+-4\pi & -4\pi & -4\\
+2\pi^{2} & 2\pi^{2} & 2\pi
+\end{bmatrix}
+\begin{bmatrix}
+dx\\
+dy\\
+dz
+\end{bmatrix}\\
+&=
+\begin{bmatrix}
+0\\
+-4\pi dx - 4\pi dy -4dz\\
+2\pi^{2} dx + 2\pi^{2} dy + 2\pi dz
+\end{bmatrix}
+\end{align*}
+
+\end{example}
+
+
+\end{document}
